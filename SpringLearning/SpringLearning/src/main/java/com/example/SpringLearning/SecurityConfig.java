@@ -7,6 +7,10 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -23,5 +27,23 @@ public class SecurityConfig {
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         http.httpBasic(Customizer.withDefaults());
         return (SecurityFilterChain)http.build();
+    }
+
+    //adding in memory user and password
+
+    @Bean
+    public UserDetailsService userDetailsService(){
+
+        UserDetails userA = User.withUsername("userA")
+                .password("{noop}userA")
+                .roles("dev")
+                .build();
+
+        UserDetails admin = User.withUsername("admin")
+                .password("{noop}admin")
+                .roles("prod")
+                .build();
+
+        return new InMemoryUserDetailsManager(userA, admin);
     }
 }
