@@ -1,3 +1,0 @@
-Create table Country(id int primary key, country_name varchar(20), country_capital varchar(20));
-insert into Country values(1,'India','New Delhi');
-insert into Country values(2,'France','Paris');
