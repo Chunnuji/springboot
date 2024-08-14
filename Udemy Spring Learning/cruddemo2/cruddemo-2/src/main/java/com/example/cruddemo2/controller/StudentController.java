@@ -32,21 +32,21 @@ public class StudentController {
         return studentArrayList.get(ind);
     }
 
-    @ExceptionHandler
-    public ResponseEntity<StudentErrorMessage> StudentIdException(StudentNotFoundException exp){
-        StudentErrorMessage sem = new StudentErrorMessage();
-        sem.setStatus(HttpStatus.NOT_FOUND.value());
-        sem.setMessage(exp.getMessage());
-        sem.setTimestamp(System.currentTimeMillis());
-        return new ResponseEntity<>(sem,HttpStatus.NOT_FOUND);
-    }
-
-    @ExceptionHandler
-    public ResponseEntity<StudentErrorMessage> anyException(Exception exp){
-        StudentErrorMessage sem = new StudentErrorMessage();
-        sem.setStatus(HttpStatus.BAD_REQUEST.value());
-        sem.setMessage(exp.getMessage());
-        sem.setTimestamp(System.currentTimeMillis());
-        return new ResponseEntity<>(sem,HttpStatus.BAD_REQUEST);
-    }
+//    @ExceptionHandler
+//    public ResponseEntity<StudentErrorMessage> StudentIdException(StudentNotFoundException exp){
+//        StudentErrorMessage sem = new StudentErrorMessage();
+//        sem.setStatus(HttpStatus.NOT_FOUND.value());
+//        sem.setMessage(exp.getMessage());
+//        sem.setTimestamp(System.currentTimeMillis());
+//        return new ResponseEntity<>(sem,HttpStatus.NOT_FOUND);
+//    }
+//
+//    @ExceptionHandler
+//    public ResponseEntity<StudentErrorMessage> anyException(Exception exp){
+//        StudentErrorMessage sem = new StudentErrorMessage();
+//        sem.setStatus(HttpStatus.BAD_REQUEST.value());
+//        sem.setMessage(exp.getMessage());
+//        sem.setTimestamp(System.currentTimeMillis());
+//        return new ResponseEntity<>(sem,HttpStatus.BAD_REQUEST);
+//    }
 }
